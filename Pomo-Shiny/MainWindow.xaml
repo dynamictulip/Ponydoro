@@ -5,8 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pomo_Shiny"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="MainWindow" Height="400" Width="400" WindowStyle="None" AllowsTransparency="True">
+    <Window.Resources>
+        <Color x:Key="ButtonColour1">#5FFF1111</Color>
+        <Color x:Key="ButtonColour2">#FFFFFF11</Color>
+        <Color x:Key="ButtonColour3">#5F11FF11</Color>
+        <Color x:Key="ButtonText">#FF640064</Color>
         
+        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="{DynamicResource ButtonColour1}"/>
+                        <GradientStop Color="{DynamicResource ButtonColour2}" Offset="0.5"/>
+                        <GradientStop Color="{DynamicResource ButtonColour3}" Offset="1"/>
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground">
+                <Setter.Value>
+                    <SolidColorBrush Color="{DynamicResource ButtonText}"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="VerticalAlignment" Value ="Top"/>
+            <Setter Property="Width" Value ="100"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Path Fill="{TemplateBinding Background}" Data="M10,0 h80 a10,10 0 0 1 10,10 a10,10 0 0 1 -10,10 h-80 a10,10 0 0 1 -10,-10 a10,10 0 0 1 10,-10 z"/>
+
+                            <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="unicorn.png" Stretch="Uniform"/>
+    </Window.Background>
+    <Window.ContextMenu>
+        <ContextMenu>
+            <MenuItem Header="Reset"/>
+            <MenuItem Header="Exit"/>
+        </ContextMenu>
+    </Window.ContextMenu>
+    <Grid>
+        <Button Content="Go again" HorizontalAlignment="Left" Margin="150.873,164.825,0,0" Style="{StaticResource ButtonStyle}"/>
+        <Button Content="Take a break" HorizontalAlignment="Left" Margin="150.873,196.217,0,0" Style="{StaticResource ButtonStyle}"/>
     </Grid>
 </Window>
