@@ -9,9 +9,11 @@ namespace Pomo_Shiny
         public MainWindowViewModel(IApplicationAccessor applicationAccessor)
         {
             _applicationAccessor = applicationAccessor;
+
+            ExitCommand = new DelegateCommand(Exit);
         }
 
-        public ICommand ExitCommand => new DelegateCommand(Exit);
+        public ICommand ExitCommand { get; }
 
         private void Exit()
         {
