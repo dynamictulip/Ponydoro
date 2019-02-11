@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pomo_Shiny"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="400" WindowStyle="None" AllowsTransparency="True">
+        Title="MainWindow" Height="400" Width="400" WindowStyle="None" AllowsTransparency="True"
+        d:DataContext="{d:DesignData MainWindowViewModel}">
     <Window.Resources>
         <Color x:Key="ButtonColour1">#5FFF1111</Color>
         <Color x:Key="ButtonColour2">#FFFFFF11</Color>
@@ -51,7 +52,7 @@
     <Window.ContextMenu>
         <ContextMenu>
             <MenuItem Header="Reset"/>
-            <MenuItem Header="Exit"/>
+            <MenuItem Header="Exit" Command="{Binding ExitCommand}"/>
         </ContextMenu>
     </Window.ContextMenu>
     <Grid>
