@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Pomo_Shiny"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="400" WindowStyle="None" AllowsTransparency="True"
-        d:DataContext="{d:DesignData MainWindowViewModel}">
+        d:DataContext="{d:DesignInstance local:MainWindowViewModel}">
     <Window.Resources>
         <Color x:Key="ButtonColour1">#5FFF1111</Color>
         <Color x:Key="ButtonColour2">#FFFFFF11</Color>
@@ -47,7 +47,7 @@
         </Style>
     </Window.Resources>
     <Window.Background>
-        <ImageBrush ImageSource="unicorn.png" Stretch="Uniform"/>
+        <ImageBrush ImageSource="unicorn2.png" Stretch="Uniform"/>
     </Window.Background>
     <Window.ContextMenu>
         <ContextMenu>
@@ -56,7 +56,7 @@
         </ContextMenu>
     </Window.ContextMenu>
     <Grid>
-        <Button Content="Go again" HorizontalAlignment="Left" Margin="150.873,164.825,0,0" Style="{StaticResource ButtonStyle}"/>
+        <Button Content="Go again" Command="{Binding StartTimerCommand}" HorizontalAlignment="Left" Margin="150.873,164.825,0,0" Style="{StaticResource ButtonStyle}"/>
         <Button Content="Take a break" HorizontalAlignment="Left" Margin="150.873,196.217,0,0" Style="{StaticResource ButtonStyle}"/>
     </Grid>
 </Window>
