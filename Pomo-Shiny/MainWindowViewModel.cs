@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Windows.Input;
 
 namespace Pomo_Shiny
@@ -7,12 +6,14 @@ namespace Pomo_Shiny
     public class MainWindowViewModel : ObservableObject
     {
         private readonly IApplicationAccessor _applicationAccessor;
+        private readonly ICountdownTimer _countdownTimer;
         private TimeSpan _remainingTime;
-        private Timer _timer;
 
-        public MainWindowViewModel(IApplicationAccessor applicationAccessor)
+        public MainWindowViewModel(IApplicationAccessor applicationAccessor, ICountdownTimer countdownTimer)
         {
             _applicationAccessor = applicationAccessor;
+            _countdownTimer = countdownTimer;
+            _countdownTimer.Callback = val => RemainingTime = val;
 
             ExitCommand = new DelegateCommand(Exit);
             StartTimerCommand = new DelegateCommand(StartTimer);
@@ -35,26 +36,12 @@ namespace Pomo_Shiny
 
         private void StartTimer()
         {
-            NewTimer(25);
+            _countdownTimer.StartCountdown(25);
         }
 
         private void StartBreakTimer()
         {
-            NewTimer(5);
-        }
-
-        private void NewTimer(int minutes)
-        {
-            _timer?.Dispose();
-            RemainingTime = new TimeSpan(0, 0, minutes, 0);
-            _timer = new Timer(UpdateRemainingTime, null, 1000, 1000);
-        }
-
-        private void UpdateRemainingTime(object state)
-        {
-            RemainingTime = RemainingTime.Subtract(new TimeSpan(0, 0, 0, 1));
-            if (RemainingTime.TotalSeconds < 1)
-                _timer.Dispose();
+            _countdownTimer.StartCountdown(5);
         }
 
         private void Exit()
