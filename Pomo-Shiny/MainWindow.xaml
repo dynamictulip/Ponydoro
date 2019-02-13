@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:Pomo_Shiny"
         mc:Ignorable="d"
         Title="Break time!" Height="400" Width="400"
-        d:DataContext="{d:DesignInstance local:MainWindowViewModel}" WindowStartupLocation="CenterScreen" Icon="unicorn2.png" WindowStyle="None" AllowsTransparency="True" Topmost="True">
+        d:DataContext="{d:DesignInstance local:MainWindowViewModel}" 
+        WindowStartupLocation="CenterScreen" Icon="unicorn2.png" WindowStyle="None" AllowsTransparency="True" Topmost="True" IsManipulationEnabled="True"
+        MouseDown="Window_MouseDown">
     <Window.Resources>
         <Color x:Key="ButtonBackground">#BFFFFFFF</Color>
         <Color x:Key="ButtonText">#FF640064</Color>
