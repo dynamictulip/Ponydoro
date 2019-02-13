@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Windows;
 
 namespace Pomo_Shiny
 {
@@ -7,6 +8,7 @@ namespace Pomo_Shiny
     /// </summary>
     public partial class MainWindow : Window
     {
+        [ExcludeFromCodeCoverage]
         public MainWindow()
         {
             DataContext = new MainWindowViewModel(new ApplicationAccessor(), new CountdownTimer());

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 
 namespace Pomo_Shiny
@@ -9,6 +10,7 @@ namespace Pomo_Shiny
         void StartCountdown(int minutes);
     }
 
+    [ExcludeFromCodeCoverage] //hard to test timer
     internal class CountdownTimer : ICountdownTimer
     {
         private TimeSpan _remainingTime;

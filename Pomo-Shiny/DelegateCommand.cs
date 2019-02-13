@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows.Input;
 
 namespace Pomo_Shiny
 {
+    [ExcludeFromCodeCoverage]
     public class DelegateCommand : ICommand
     {
         private readonly Action _action;
