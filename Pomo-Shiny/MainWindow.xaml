@@ -5,22 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pomo_Shiny"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="400" WindowStyle="None" AllowsTransparency="True"
-        d:DataContext="{d:DesignInstance local:MainWindowViewModel}">
+        Title="Break time!" Height="400" Width="400"
+        d:DataContext="{d:DesignInstance local:MainWindowViewModel}" WindowStartupLocation="CenterScreen" Icon="unicorn2.png" WindowStyle="None" AllowsTransparency="True" Topmost="True">
     <Window.Resources>
-        <Color x:Key="ButtonColour1">#5FFF1111</Color>
-        <Color x:Key="ButtonColour2">#FFFFFF11</Color>
-        <Color x:Key="ButtonColour3">#5F11FF11</Color>
+        <Color x:Key="ButtonBackground">#BFFFFFFF</Color>
         <Color x:Key="ButtonText">#FF640064</Color>
-        
+
         <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
             <Setter Property="Background">
                 <Setter.Value>
-                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                        <GradientStop Color="{DynamicResource ButtonColour1}"/>
-                        <GradientStop Color="{DynamicResource ButtonColour2}" Offset="0.5"/>
-                        <GradientStop Color="{DynamicResource ButtonColour3}" Offset="1"/>
-                    </LinearGradientBrush>
+                    <SolidColorBrush Color="{DynamicResource ButtonBackground}"/>
                 </Setter.Value>
             </Setter>
             <Setter Property="Foreground">
