@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Pomo_Shiny"
         mc:Ignorable="d"
-        Title="Break time!" Height="400" Width="400"
+        Height="400" Width="400"
         d:DataContext="{d:DesignInstance local:MainWindowViewModel}"
         WindowStartupLocation="CenterScreen" Icon="unicorn2.png" WindowStyle="None" AllowsTransparency="True"
         Topmost="{Binding TimerOff}" IsManipulationEnabled="True"
@@ -13,18 +13,12 @@
     <Window.Resources>
         <Color x:Key="ButtonBackground">#BFFFFFFF</Color>
         <Color x:Key="ButtonText">#FF640064</Color>
+        <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="{DynamicResource ButtonBackground}" />
+        <SolidColorBrush x:Key="ButtonTextBrush" Color="{DynamicResource ButtonText}" />
 
         <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
-            <Setter Property="Background">
-                <Setter.Value>
-                    <SolidColorBrush Color="{DynamicResource ButtonBackground}" />
-                </Setter.Value>
-            </Setter>
-            <Setter Property="Foreground">
-                <Setter.Value>
-                    <SolidColorBrush Color="{DynamicResource ButtonText}" />
-                </Setter.Value>
-            </Setter>
+            <Setter Property="Background" Value="{StaticResource ButtonBackgroundBrush}"/>
+            <Setter Property="Foreground" Value="{StaticResource ButtonTextBrush}"/>
             <Setter Property="VerticalAlignment" Value="Top" />
             <Setter Property="Width" Value="100" />
             <Setter Property="BorderBrush" Value="{x:Null}" />
@@ -35,7 +29,6 @@
                         <Grid>
                             <Path Fill="{TemplateBinding Background}"
                                   Data="M10,0 h80 a10,10 0 0 1 10,10 a10,10 0 0 1 -10,10 h-80 a10,10 0 0 1 -10,-10 a10,10 0 0 1 10,-10 z" />
-
                             <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                               HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
                         </Grid>
@@ -49,6 +42,26 @@
                 <DataTrigger Binding="{Binding TimerOff}" Value="False">
                     <Setter Property="Visibility" Value="Hidden" />
                 </DataTrigger>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="FontSize" To="13"/>
+                                <ColorAnimation Duration="0:0:0.100" Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" To="#FFFFFFFF" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="FontSize" To="12" />
+                                <ColorAnimation Duration="0:0:0.100" Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" To="{StaticResource ButtonBackground}" />
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
             </Style.Triggers>
         </Style>
     </Window.Resources>
@@ -69,7 +82,7 @@
         <Button Content="Take a break" Command="{Binding StartBreakTimerCommand}" HorizontalAlignment="Left"
                 Margin="150.873,196.217,0,0" Style="{StaticResource ButtonStyle}" />
         <Label Content="{Binding RemainingTime.TotalSeconds}" HorizontalAlignment="Left" Margin="187,174,0,0"
-               VerticalAlignment="Top" FontWeight="Bold" FontSize="16" RenderTransformOrigin="2.368,-1.129" >
+               VerticalAlignment="Top" FontWeight="Bold" FontSize="16" RenderTransformOrigin="2.368,-1.129" Foreground="{StaticResource ButtonBackgroundBrush}">
             <Label.Style>
                 <Style TargetType="{x:Type Label}">
                 <Style.Triggers>
