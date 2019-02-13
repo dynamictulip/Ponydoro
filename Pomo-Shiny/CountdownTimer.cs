@@ -8,6 +8,7 @@ namespace Pomo_Shiny
     {
         Action<TimeSpan> Callback { get; set; }
         void StartCountdown(int minutes);
+        void StopCountdown();
     }
 
     [ExcludeFromCodeCoverage] //hard to test timer
@@ -28,9 +29,15 @@ namespace Pomo_Shiny
 
         public void StartCountdown(int minutes)
         {
-            _timer?.Dispose();
+            StopCountdown();
             RemainingTime = new TimeSpan(0, 0, minutes, 0);
             _timer = new Timer(UpdateRemainingTime, null, 1000, 1000);
+        }
+
+        public void StopCountdown()
+        {
+            _timer?.Dispose();
+            RemainingTime = new TimeSpan(0, 0, 0, 0);
         }
 
         public Action<TimeSpan> Callback { get; set; }
@@ -39,7 +46,7 @@ namespace Pomo_Shiny
         {
             RemainingTime = RemainingTime.Subtract(new TimeSpan(0, 0, 0, 1));
             if (RemainingTime.TotalSeconds < 1)
-                _timer.Dispose();
+                StopCountdown();
         }
     }
 }

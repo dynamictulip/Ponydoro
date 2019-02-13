@@ -18,11 +18,13 @@ namespace Pomo_Shiny
             ExitCommand = new DelegateCommand(Exit);
             StartTimerCommand = new DelegateCommand(StartTimer);
             StartBreakTimerCommand = new DelegateCommand(StartBreakTimer);
+            StopTimerCommand = new DelegateCommand(StopTimer);
         }
 
         public ICommand ExitCommand { get; }
         public ICommand StartTimerCommand { get; }
         public ICommand StartBreakTimerCommand { get; }
+        public ICommand StopTimerCommand {get;}
 
         public TimeSpan RemainingTime
         {
@@ -31,12 +33,21 @@ namespace Pomo_Shiny
             {
                 _remainingTime = value;
                 RaisePropertyChangedEvent(nameof(RemainingTime));
+                RaisePropertyChangedEvent(nameof(TimerOff));
             }
         }
+
+        public bool TimerOff => _remainingTime.TotalSeconds < 1;
+
 
         private void StartTimer()
         {
             _countdownTimer.StartCountdown(25);
+        }
+
+        private void StopTimer()
+        {
+            _countdownTimer.StopCountdown();
         }
 
         private void StartBreakTimer()
