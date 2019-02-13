@@ -45,12 +45,13 @@
     </Window.Background>
     <Window.ContextMenu>
         <ContextMenu>
-            <MenuItem Header="Reset"/>
+            <MenuItem Header="Reset" Command="{Binding StartTimerCommand}"/>
             <MenuItem Header="Exit" Command="{Binding ExitCommand}"/>
         </ContextMenu>
     </Window.ContextMenu>
     <Grid>
         <Button Content="Go again" Command="{Binding StartTimerCommand}" HorizontalAlignment="Left" Margin="150.873,164.825,0,0" Style="{StaticResource ButtonStyle}"/>
-        <Button Content="Take a break" HorizontalAlignment="Left" Margin="150.873,196.217,0,0" Style="{StaticResource ButtonStyle}"/>
+        <Button Content="Take a break" Command="{Binding StartBreakTimerCommand}" HorizontalAlignment="Left" Margin="150.873,196.217,0,0" Style="{StaticResource ButtonStyle}"/>
+        <Label Content="{Binding RemainingTime.TotalSeconds}" HorizontalAlignment="Left" Margin="151,221,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="16"/>
     </Grid>
 </Window>
