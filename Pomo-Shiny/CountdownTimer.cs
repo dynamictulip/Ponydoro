@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 
 namespace Pomo_Shiny
 {
@@ -13,8 +12,9 @@ namespace Pomo_Shiny
     public class CountdownTimer : ICountdownTimer
     {
         private readonly ISoundProvider _soundProvider;
-        private TimeSpan _remainingTime;
         private readonly ITimerFacade _timerFacade;
+        private int _countdownStartMinutes;
+        private TimeSpan _remainingTime;
 
         public CountdownTimer(ITimerFacade timerFacade, ISoundProvider soundProvider)
         {
@@ -32,11 +32,14 @@ namespace Pomo_Shiny
             }
         }
 
+        public double ElapsedPercentage => RemainingTime.TotalMinutes / _countdownStartMinutes;
+
         public void StartCountdown(int minutes)
         {
             StopCountdown();
+            _countdownStartMinutes = minutes;
             RemainingTime = new TimeSpan(0, 0, minutes, 0);
-       //     RemainingTime = new TimeSpan(0, 0, 0, 5);
+            //     RemainingTime = new TimeSpan(0, 0, 0, 5);
             _timerFacade.NewTimer(UpdateRemainingTime);
         }
 

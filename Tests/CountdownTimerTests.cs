@@ -39,6 +39,22 @@ namespace Tests
             _callBackList.Add(obj);
         }
 
+        [TestCase(0, 0)]
+        [TestCase(15, 0.25)]
+        [TestCase(30, 0.5)]
+        [TestCase(45, 0.75)]
+        [TestCase(60, 1)]
+        [TestCase(88, 1)]
+        public void PercentageComplete(int elapsedSeconds, double expectedPercentage)
+        {
+            _sut.StartCountdown(1);
+
+            while (_callBackList.Last().TotalSeconds > elapsedSeconds)
+                _timerFacadeCallback.Invoke(null);
+
+            Assert.AreEqual(expectedPercentage, _sut.ElapsedPercentage);
+        }
+
         [Test]
         public void Countdown_end_triggers_noise()
         {
