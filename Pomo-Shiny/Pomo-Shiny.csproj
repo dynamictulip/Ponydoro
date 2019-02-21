@@ -64,6 +64,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ApplicationAccessor.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="CountdownTimer.cs" />
     <Compile Include="DelegateCommand.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -105,5 +106,6 @@
   <ItemGroup>
     <Resource Include="unicorn2.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
