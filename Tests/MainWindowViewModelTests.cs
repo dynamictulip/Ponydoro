@@ -44,6 +44,14 @@ namespace Tests
         }
 
         [Test]
+        public void StopTimerCommand_stops_timer()
+        {
+            _sut.StopTimerCommand.Execute(null);
+
+            A.CallTo(() => _fakeCountdownTimer.StopCountdown()).MustHaveHappened();
+        }
+
+        [Test]
         public void Change_in_timer_updates_RemainingTime_in_viewmodel()
         {
             Assert.AreEqual(0, _sut.RemainingTime.TotalSeconds);
@@ -57,6 +65,18 @@ namespace Tests
             var timeSpan = new TimeSpan(0,0,23,22);
             _fakeCountdownTimer.Callback(timeSpan);
             Assert.AreEqual(timeSpan, _sut.RemainingTime);
+        }
+
+        [TestCase(0, true)]
+        [TestCase(-1, true)]
+        [TestCase(1, false)]
+        [TestCase(20, false)]
+        [TestCase(2000000, false)]
+        public void TimerOff_works(int secondsRemaining, bool expectedResult)
+        {
+            _fakeCountdownTimer.Callback(TimeSpan.FromSeconds(secondsRemaining));
+
+            Assert.AreEqual(expectedResult, _sut.TimerOff);
         }
     }
 }

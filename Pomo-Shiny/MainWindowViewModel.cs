@@ -37,7 +37,7 @@ namespace Pomo_Shiny
             }
         }
 
-        public bool TimerOff => _remainingTime.TotalSeconds < 1;
+        public bool TimerOff => RemainingTime.TotalSeconds < 1;
 
 
         private void StartTimer()
