@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Media\unicorn2_Pyo_12.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
@@ -142,6 +145,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Media\07070150.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Media\unicorn2_Pyo_12.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
