@@ -24,7 +24,7 @@ namespace Pomo_Shiny
         public ICommand ExitCommand { get; }
         public ICommand StartTimerCommand { get; }
         public ICommand StartBreakTimerCommand { get; }
-        public ICommand StopTimerCommand {get;}
+        public ICommand StopTimerCommand { get; }
 
         public TimeSpan RemainingTime
         {
@@ -34,12 +34,17 @@ namespace Pomo_Shiny
                 _remainingTime = value;
                 RaisePropertyChangedEvent(nameof(RemainingTime));
                 RaisePropertyChangedEvent(nameof(TimerOff));
-                RaisePropertyChangedEvent(nameof(ElapsedPercentage));
+                RaisePropertyChangedEvent(nameof(PercentageToGo));
+                RaisePropertyChangedEvent(nameof(Title));
             }
         }
 
         public bool TimerOff => RemainingTime.TotalSeconds < 1;
-        public double ElapsedPercentage => _countdownTimer.ElapsedPercentage;
+        public double PercentageToGo => _countdownTimer.PercentageToGo;
+
+        public string Title => PercentageToGo >= 1 || PercentageToGo <= 0 ? "Ready for a ponydorro?" :
+            PercentageToGo > 0.5 ? "Giddy up" :
+            PercentageToGo > 0.1 ? "Keep trotting" : "Nearly there";
 
         private void StartTimer()
         {

@@ -5,7 +5,7 @@ namespace Pomo_Shiny
     public interface ICountdownTimer
     {
         Action<TimeSpan> Callback { get; set; }
-        double ElapsedPercentage { get; }
+        double PercentageToGo { get; }
         void StartCountdown(int minutes);
         void StopCountdown();
     }
@@ -33,7 +33,8 @@ namespace Pomo_Shiny
             }
         }
 
-        public double ElapsedPercentage => RemainingTime.TotalMinutes / _countdownStartMinutes;
+        public double PercentageToGo =>
+            _countdownStartMinutes == 0 ? 1 : RemainingTime.TotalMinutes / _countdownStartMinutes;
 
         public void StartCountdown(int minutes)
         {

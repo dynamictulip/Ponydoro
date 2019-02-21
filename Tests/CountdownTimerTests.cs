@@ -52,7 +52,7 @@ namespace Tests
             while (_callBackList.Last().TotalSeconds > elapsedSeconds)
                 _timerFacadeCallback.Invoke(null);
 
-            Assert.AreEqual(expectedPercentage, _sut.ElapsedPercentage);
+            Assert.AreEqual(expectedPercentage, _sut.PercentageToGo);
         }
 
         [Test]

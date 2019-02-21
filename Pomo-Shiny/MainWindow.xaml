@@ -6,8 +6,9 @@
         mc:Ignorable="d"
         Height="400" Width="400"
         d:DataContext="{d:DesignData /SampleData/MainWindowViewModelSampleData.xaml}"
-        WindowStartupLocation="CenterScreen" Icon="Media/unicorn2.png" WindowStyle="None" AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen" Icon="Media/unicorn2_Pyo_12.ico" WindowStyle="None" AllowsTransparency="True"
         Topmost="{Binding TimerOff}" IsManipulationEnabled="True"
+        Title="{Binding Title}"
         MouseDown="Window_MouseDown">
     <Window.Background>
         <ImageBrush ImageSource="Media/unicorn2.png" Stretch="Uniform" Opacity="0" />
@@ -33,10 +34,10 @@
                     <BeginStoryboard>
                         <Storyboard>
                             <DoubleAnimation Storyboard.TargetName="UnicornTop" Storyboard.TargetProperty="Offset"
-                                             To="{Binding ElapsedPercentage, NotifyOnTargetUpdated=True}"
+                                             To="{Binding PercentageToGo, NotifyOnTargetUpdated=True}"
                                              Duration="0:0:1" />
                             <DoubleAnimation Storyboard.TargetName="UnicornBottom" Storyboard.TargetProperty="Offset"
-                                             To="{Binding ElapsedPercentage, NotifyOnTargetUpdated=True}"
+                                             To="{Binding PercentageToGo, NotifyOnTargetUpdated=True}"
                                              Duration="0:0:1" />
                         </Storyboard>
                     </BeginStoryboard>

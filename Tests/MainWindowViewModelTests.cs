@@ -7,9 +7,9 @@ namespace Tests
 {
     public class MainWindowViewModelTests
     {
-        private MainWindowViewModel _sut;
         private IApplicationAccessor _fakeApplicationAccessor;
         private ICountdownTimer _fakeCountdownTimer;
+        private MainWindowViewModel _sut;
 
         [SetUp]
         public void Setup()
@@ -62,7 +62,7 @@ namespace Tests
             _fakeCountdownTimer.Callback(TimeSpan.MinValue);
             Assert.AreEqual(TimeSpan.MinValue, _sut.RemainingTime);
 
-            var timeSpan = new TimeSpan(0,0,23,22);
+            var timeSpan = new TimeSpan(0, 0, 23, 22);
             _fakeCountdownTimer.Callback(timeSpan);
             Assert.AreEqual(timeSpan, _sut.RemainingTime);
         }
@@ -84,10 +84,23 @@ namespace Tests
         [TestCase(0.56)]
         [TestCase(0.87)]
         [TestCase(1)]
-        public void ElapsedPercentage_passes_value(double value)
+        public void PercentageToGo_passes_value(double value)
         {
-            A.CallTo(() => _fakeCountdownTimer.ElapsedPercentage).Returns(value);
-            Assert.AreEqual(value, _sut.ElapsedPercentage);
+            A.CallTo(() => _fakeCountdownTimer.PercentageToGo).Returns(value);
+            Assert.AreEqual(value, _sut.PercentageToGo);
+        }
+
+        [TestCase(1, "Ready for a ponydorro?")]
+        [TestCase(0.9, "Giddy up")]
+        [TestCase(0.75, "Giddy up")]
+        [TestCase(0.49, "Keep trotting")]
+        [TestCase(0.2, "Keep trotting")]
+        [TestCase(0.01, "Nearly there")]
+        [TestCase(0, "Ready for a ponydorro?")]
+        public void Title_depends_on_PercentageToGo(double value, string expectedTitle)
+        {
+            A.CallTo(() => _fakeCountdownTimer.PercentageToGo).Returns(value);
+            Assert.AreEqual(expectedTitle, _sut.Title);
         }
     }
 }
