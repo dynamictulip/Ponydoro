@@ -14,8 +14,14 @@ namespace Pomo_Shiny
     [ExcludeFromCodeCoverage] //hard to test timer
     internal class CountdownTimer : ICountdownTimer
     {
+        private readonly ISoundProvider _soundProvider;
         private TimeSpan _remainingTime;
         private Timer _timer;
+
+        public CountdownTimer(ISoundProvider soundProvider)
+        {
+            _soundProvider = soundProvider;
+        }
 
         private TimeSpan RemainingTime
         {
@@ -30,7 +36,8 @@ namespace Pomo_Shiny
         public void StartCountdown(int minutes)
         {
             StopCountdown();
-            RemainingTime = new TimeSpan(0, 0, minutes, 0);
+       //     RemainingTime = new TimeSpan(0, 0, minutes, 0);
+            RemainingTime = new TimeSpan(0, 0, 0, 5);
             _timer = new Timer(UpdateRemainingTime, null, 1000, 1000);
         }
 
@@ -46,7 +53,10 @@ namespace Pomo_Shiny
         {
             RemainingTime = RemainingTime.Subtract(new TimeSpan(0, 0, 0, 1));
             if (RemainingTime.TotalSeconds < 1)
+            {
+                _soundProvider.MakeSoundAsync();
                 StopCountdown();
+            }
         }
     }
 }
