@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:resx="clr-namespace:Pomo_Shiny.Properties"
         mc:Ignorable="d"
         Height="400" Width="400"
         d:DataContext="{d:DesignData /SampleData/MainWindowViewModelSampleData.xaml}"
@@ -11,24 +10,47 @@
         Topmost="{Binding TimerOff}" IsManipulationEnabled="True"
         MouseDown="Window_MouseDown">
     <Window.Background>
-        <ImageBrush ImageSource="Media/unicorn2.png" Stretch="Uniform" />
+        <ImageBrush ImageSource="Media/unicorn2.png" Stretch="Uniform" Opacity="0" />
     </Window.Background>
     <Window.ContextMenu>
         <ContextMenu Background="Transparent" BorderThickness="0">
-            <MenuItem Header="Reset" Command="{Binding StartTimerCommand}" Style="{StaticResource MenuItemStyle}"/>
-            <MenuItem Header="Stop" Command="{Binding StopTimerCommand}"  Style="{StaticResource MenuItemStyle}"/>
-            <MenuItem Header="Exit" Command="{Binding ExitCommand}"  Style="{StaticResource MenuItemStyle}"/>
+            <MenuItem Header="Reset" Command="{Binding StartTimerCommand}" Style="{StaticResource MenuItemStyle}" />
+            <MenuItem Header="Stop" Command="{Binding StopTimerCommand}" Style="{StaticResource MenuItemStyle}" />
+            <MenuItem Header="Exit" Command="{Binding ExitCommand}" Style="{StaticResource MenuItemStyle}" />
         </ContextMenu>
     </Window.ContextMenu>
     <Grid>
+        <Image Source="Media/unicorn2.png" Stretch="Uniform">
+            <Image.OpacityMask>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop />
+                    <GradientStop x:Name="UnicornTop" />
+                    <GradientStop x:Name="UnicornBottom" Color="White" Offset="0" />
+                </LinearGradientBrush>
+            </Image.OpacityMask>
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="Binding.TargetUpdated">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="UnicornTop" Storyboard.TargetProperty="Offset"
+                                             To="{Binding ElapsedPercentage, NotifyOnTargetUpdated=True}"
+                                             Duration="0:0:1" />
+                            <DoubleAnimation Storyboard.TargetName="UnicornBottom" Storyboard.TargetProperty="Offset"
+                                             To="{Binding ElapsedPercentage, NotifyOnTargetUpdated=True}"
+                                             Duration="0:0:1" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Image.Triggers>
+        </Image>
         <Button Content="Start"
                 Command="{Binding StartTimerCommand}"
-                HorizontalAlignment="Left" Margin="150.873,164.825,0,0" Style="{StaticResource ButtonStyle}"/>
+                HorizontalAlignment="Left" Margin="150.873,164.825,0,0" Style="{StaticResource ButtonStyle}" />
         <Button Content="Take a break" Command="{Binding StartBreakTimerCommand}" HorizontalAlignment="Left"
                 Margin="150.873,196.217,0,0" Style="{StaticResource ButtonStyle}" />
         <Label Content="{Binding RemainingTime.TotalSeconds}" HorizontalAlignment="Left" Margin="187,174,0,0"
-               VerticalAlignment="Top" FontWeight="Bold" FontSize="16" RenderTransformOrigin="2.368,-1.129" 
+               VerticalAlignment="Top" FontWeight="Bold" FontSize="16" RenderTransformOrigin="2.368,-1.129"
                Foreground="{StaticResource ButtonBackgroundBrush}"
-               Visibility="{Binding TimerOff, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+               Visibility="{Binding TimerOff, Converter={StaticResource InverseBoolToVisibilityConverter}}" />
     </Grid>
 </Window>
