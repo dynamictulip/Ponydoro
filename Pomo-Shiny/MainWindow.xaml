@@ -13,16 +13,16 @@
         <ImageBrush ImageSource="unicorn2.png" Stretch="Uniform" />
     </Window.Background>
     <Window.ContextMenu>
-        <ContextMenu Background="#00ffffff" BorderThickness="0">
-            <MenuItem Header="Reset" Command="{Binding StartTimerCommand}" Style="{DynamicResource MenuItemStyle}"/>
-            <MenuItem Header="Stop" Command="{Binding StopTimerCommand}"  Style="{StaticResource ContextMenuButtonStyle}"/>
-            <MenuItem Header="Exit" Command="{Binding ExitCommand}"  Style="{StaticResource ContextMenuButtonStyle}"/>
+        <ContextMenu Background="Transparent" BorderThickness="0">
+            <MenuItem Header="Reset" Command="{Binding StartTimerCommand}" Style="{StaticResource MenuItemStyle}"/>
+            <MenuItem Header="Stop" Command="{Binding StopTimerCommand}"  Style="{StaticResource MenuItemStyle}"/>
+            <MenuItem Header="Exit" Command="{Binding ExitCommand}"  Style="{StaticResource MenuItemStyle}"/>
         </ContextMenu>
     </Window.ContextMenu>
     <Grid>
         <Button Content="Start"
                 Command="{Binding StartTimerCommand}"
-                HorizontalAlignment="Left" Margin="150.873,164.825,0,0" Style="{StaticResource ButtonStyle}" />
+                HorizontalAlignment="Left" Margin="150.873,164.825,0,0" Style="{StaticResource ButtonStyle}"/>
         <Button Content="Take a break" Command="{Binding StartBreakTimerCommand}" HorizontalAlignment="Left"
                 Margin="150.873,196.217,0,0" Style="{StaticResource ButtonStyle}" />
         <Label Content="{Binding RemainingTime.TotalSeconds}" HorizontalAlignment="Left" Margin="187,174,0,0"
