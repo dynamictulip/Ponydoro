@@ -3,14 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:resx="clr-namespace:Pomo_Shiny.Properties"
         mc:Ignorable="d"
         Height="400" Width="400"
         d:DataContext="{d:DesignData /SampleData/MainWindowViewModelSampleData.xaml}"
-        WindowStartupLocation="CenterScreen" Icon="unicorn2.png" WindowStyle="None" AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen" Icon="Media/unicorn2.png" WindowStyle="None" AllowsTransparency="True"
         Topmost="{Binding TimerOff}" IsManipulationEnabled="True"
         MouseDown="Window_MouseDown">
     <Window.Background>
-        <ImageBrush ImageSource="unicorn2.png" Stretch="Uniform" />
+        <ImageBrush ImageSource="Media/unicorn2.png" Stretch="Uniform" />
     </Window.Background>
     <Window.ContextMenu>
         <ContextMenu Background="Transparent" BorderThickness="0">
