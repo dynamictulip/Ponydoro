@@ -8,7 +8,7 @@ using Pomo_Shiny.Properties;
 
 namespace Pomo_Shiny
 {
-    internal interface ISoundProvider
+    public interface ISoundProvider
     {
         void MakeSound();
     }

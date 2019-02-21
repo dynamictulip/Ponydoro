@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
-using System.Threading;
 
 namespace Pomo_Shiny
 {
@@ -11,15 +10,15 @@ namespace Pomo_Shiny
         void StopCountdown();
     }
 
-    [ExcludeFromCodeCoverage] //hard to test timer
-    internal class CountdownTimer : ICountdownTimer
+    public class CountdownTimer : ICountdownTimer
     {
         private readonly ISoundProvider _soundProvider;
         private TimeSpan _remainingTime;
-        private Timer _timer;
+        private readonly ITimerFacade _timerFacade;
 
-        public CountdownTimer(ISoundProvider soundProvider)
+        public CountdownTimer(ITimerFacade timerFacade, ISoundProvider soundProvider)
         {
+            _timerFacade = timerFacade;
             _soundProvider = soundProvider;
         }
 
@@ -36,14 +35,14 @@ namespace Pomo_Shiny
         public void StartCountdown(int minutes)
         {
             StopCountdown();
-       //     RemainingTime = new TimeSpan(0, 0, minutes, 0);
-            RemainingTime = new TimeSpan(0, 0, 0, 5);
-            _timer = new Timer(UpdateRemainingTime, null, 1000, 1000);
+            RemainingTime = new TimeSpan(0, 0, minutes, 0);
+       //     RemainingTime = new TimeSpan(0, 0, 0, 5);
+            _timerFacade.NewTimer(UpdateRemainingTime);
         }
 
         public void StopCountdown()
         {
-            _timer?.Dispose();
+            _timerFacade.KillTimer();
             RemainingTime = new TimeSpan(0, 0, 0, 0);
         }
 

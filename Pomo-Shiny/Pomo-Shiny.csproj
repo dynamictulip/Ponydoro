@@ -54,6 +54,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="SoundProvider.cs" />
+    <Compile Include="TimerFacade.cs" />
     <Page Include="Styles\Colours.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

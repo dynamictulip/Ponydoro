@@ -12,7 +12,8 @@ namespace Pomo_Shiny
     {
         public MainWindow()
         {
-            DataContext = new MainWindowViewModel(new ApplicationAccessor(), new CountdownTimer(new SoundProvider()));
+            DataContext = new MainWindowViewModel(new ApplicationAccessor(),
+                new CountdownTimer(new TimerFacade(), new SoundProvider()));
             InitializeComponent();
         }
 

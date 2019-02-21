@@ -50,6 +50,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CountdownTimerTests.cs" />
     <Compile Include="InverseBoolToVisibilityConverterTests.cs" />
     <Compile Include="BoolToVisibilityConverterTests.cs" />
     <Compile Include="MainWindowViewModelTests.cs" />
