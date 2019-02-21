@@ -34,11 +34,12 @@ namespace Pomo_Shiny
                 _remainingTime = value;
                 RaisePropertyChangedEvent(nameof(RemainingTime));
                 RaisePropertyChangedEvent(nameof(TimerOff));
+                RaisePropertyChangedEvent(nameof(ElapsedPercentage));
             }
         }
 
         public bool TimerOff => RemainingTime.TotalSeconds < 1;
-
+        public double ElapsedPercentage => _countdownTimer.ElapsedPercentage;
 
         private void StartTimer()
         {

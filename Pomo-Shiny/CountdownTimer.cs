@@ -5,6 +5,7 @@ namespace Pomo_Shiny
     public interface ICountdownTimer
     {
         Action<TimeSpan> Callback { get; set; }
+        double ElapsedPercentage { get; }
         void StartCountdown(int minutes);
         void StopCountdown();
     }

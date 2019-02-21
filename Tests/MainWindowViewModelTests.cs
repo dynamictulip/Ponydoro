@@ -78,5 +78,16 @@ namespace Tests
 
             Assert.AreEqual(expectedResult, _sut.TimerOff);
         }
+
+        [TestCase(0)]
+        [TestCase(0.25)]
+        [TestCase(0.56)]
+        [TestCase(0.87)]
+        [TestCase(1)]
+        public void ElapsedPercentage_passes_value(double value)
+        {
+            A.CallTo(() => _fakeCountdownTimer.ElapsedPercentage).Returns(value);
+            Assert.AreEqual(value, _sut.ElapsedPercentage);
+        }
     }
 }
