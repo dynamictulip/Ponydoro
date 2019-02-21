@@ -3,117 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Pomo_Shiny"
-        xmlns:converters="clr-namespace:Pomo_Shiny.Converters"
         mc:Ignorable="d"
         Height="400" Width="400"
-        d:DataContext="{d:DesignInstance local:MainWindowViewModel}"
+        d:DataContext="{d:DesignData /SampleData/MainWindowViewModelSampleData.xaml}"
         WindowStartupLocation="CenterScreen" Icon="unicorn2.png" WindowStyle="None" AllowsTransparency="True"
         Topmost="{Binding TimerOff}" IsManipulationEnabled="True"
         MouseDown="Window_MouseDown">
-    <Window.Resources>
-        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
-        <converters:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter" />
-
-        <Color x:Key="ButtonBackground">#BFFFFFFF</Color>
-        <Color x:Key="ButtonText">#FF640064</Color>
-        <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="{DynamicResource ButtonBackground}" />
-        <SolidColorBrush x:Key="ButtonTextBrush" Color="{DynamicResource ButtonText}" />
-
-        <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
-            <Setter Property="Background" Value="{StaticResource ButtonBackgroundBrush}"/>
-            <Setter Property="Foreground" Value="{StaticResource ButtonTextBrush}"/>
-            <Setter Property="VerticalAlignment" Value="Top" />
-            <Setter Property="Width" Value="100" />
-            <Setter Property="BorderBrush" Value="{x:Null}" />
-            <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="Visibility" Value="{Binding TimerOff, Converter={StaticResource BoolToVisibilityConverter}}"/>
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Button}">
-                        <Grid>
-                            <Path Fill="{TemplateBinding Background}"
-                                  Data="M10,0 h80 a10,10 0 0 1 10,10 a10,10 0 0 1 -10,10 h-80 a10,10 0 0 1 -10,-10 a10,10 0 0 1 10,-10 z" />
-                            <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <EventTrigger RoutedEvent="MouseEnter">
-                    <EventTrigger.Actions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="FontSize" To="13"/>
-                                <ColorAnimation Duration="0:0:0.100" Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" To="#FFFFFFFF" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger.Actions>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="MouseLeave">
-                    <EventTrigger.Actions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="FontSize" To="12" />
-                                <ColorAnimation Duration="0:0:0.100" Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" To="{StaticResource ButtonBackground}" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger.Actions>
-                </EventTrigger>
-            </Style.Triggers>
-        </Style>
-
-        <Style x:Key="ContextMenuButtonStyle" TargetType="{x:Type MenuItem}">
-            <Setter Property="Background" Value="{StaticResource ButtonBackgroundBrush}"/>
-            <Setter Property="Foreground" Value="{StaticResource ButtonTextBrush}"/>
-            <Setter Property="VerticalAlignment" Value="Top" />
-            <Setter Property="Width" Value="100" />
-            <Setter Property="BorderBrush" Value="{x:Null}" />
-            <Setter Property="FontWeight" Value="Bold" />
-            <!--<Setter Property="Visibility" Value="{Binding TimerOff, Converter={StaticResource BoolToVisibilityConverter}}"/>-->
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type MenuItem}">
-                        <Grid>
-                            <Path Fill="{TemplateBinding Background}"
-                                  Data="M10,0 h80 a10,10 0 0 1 10,10 a10,10 0 0 1 -10,10 h-80 a10,10 0 0 1 -10,-10 a10,10 0 0 1 10,-10 z" />
-                            <ContentPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" />
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <EventTrigger RoutedEvent="MouseEnter">
-                    <EventTrigger.Actions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="FontSize" To="13"/>
-                                <ColorAnimation Duration="0:0:0.100" Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" To="#FFFFFFFF" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger.Actions>
-                </EventTrigger>
-                <EventTrigger RoutedEvent="MouseLeave">
-                    <EventTrigger.Actions>
-                        <BeginStoryboard>
-                            <Storyboard>
-                                <DoubleAnimation Duration="0:0:0.200" Storyboard.TargetProperty="FontSize" To="12" />
-                                <ColorAnimation Duration="0:0:0.100" Storyboard.TargetProperty="(Background).(SolidColorBrush.Color)" To="{StaticResource ButtonBackground}" />
-                            </Storyboard>
-                        </BeginStoryboard>
-                    </EventTrigger.Actions>
-                </EventTrigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Resources>
     <Window.Background>
         <ImageBrush ImageSource="unicorn2.png" Stretch="Uniform" />
     </Window.Background>
     <Window.ContextMenu>
         <ContextMenu Background="#00ffffff" BorderThickness="0">
-            <MenuItem Header="Reset" Command="{Binding StartTimerCommand}" Style="{StaticResource ContextMenuButtonStyle}"/>
+            <MenuItem Header="Reset" Command="{Binding StartTimerCommand}" Style="{DynamicResource MenuItemStyle}"/>
             <MenuItem Header="Stop" Command="{Binding StopTimerCommand}"  Style="{StaticResource ContextMenuButtonStyle}"/>
             <MenuItem Header="Exit" Command="{Binding ExitCommand}"  Style="{StaticResource ContextMenuButtonStyle}"/>
         </ContextMenu>

@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Pomo_Shiny">
+    <SolidColorBrush x:Key="ButtonTextBrush" Color="{DynamicResource ButtonText}" />
+    <Color x:Key="ButtonText">#FF640064</Color>
+    <Color x:Key="ButtonBackground">#BFFFFFFF</Color>
+    <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="{DynamicResource ButtonBackground}" />
+
+</ResourceDictionary>

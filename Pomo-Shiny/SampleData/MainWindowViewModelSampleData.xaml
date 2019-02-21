@@ -1,0 +1,5 @@
+﻿<Pomo_Shiny:MainWindowViewModel xmlns:Pomo_Shiny="clr-namespace:Pomo_Shiny" xmlns:System="clr-namespace:System;assembly=mscorlib" TimerOff="True">
+	<Pomo_Shiny:MainWindowViewModel.RemainingTime>
+        <System:TimeSpan/>
+    </Pomo_Shiny:MainWindowViewModel.RemainingTime>
+</Pomo_Shiny:MainWindowViewModel>
