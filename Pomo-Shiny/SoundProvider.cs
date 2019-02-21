@@ -1,30 +1,53 @@
-﻿using System.Media;
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Linq;
+using System.Media;
+using Pomo_Shiny.Properties;
 
 namespace Pomo_Shiny
 {
     internal interface ISoundProvider
     {
-        void MakeSoundAsync();
+        void MakeSound();
     }
 
+    [ExcludeFromCodeCoverage]
     internal class SoundProvider : ISoundProvider
     {
-        public void MakeSoundAsync()
-        {
-            //get file
-            var path = GetRandomSoundFile();
+        private readonly List<SoundPlayer> _players;
 
-            //play file
-            var thing = new SoundPlayer(path);
-            thing.Play();
+        public SoundProvider()
+        {
+            var resourceStreams = new List<UnmanagedMemoryStream>
+            {
+                Resources._07017109,
+                Resources._07042154,
+                Resources._07042293,
+                Resources._07043261,
+                Resources._07043397,
+                Resources._07050147,
+                Resources._07070150
+            };
+
+            _players = resourceStreams.Select(r =>
+            {
+                var soundPlayer = new SoundPlayer(r);
+                soundPlayer.LoadAsync();
+                return soundPlayer;
+            }).ToList();
         }
 
-        private static string GetRandomSoundFile()
+        public void MakeSound()
         {
+            GetRandomSoundPlayer().Play();
+        }
 
-
-            var path = @"C:\Meeple\Pomo-Shiny\Pomo-Shiny\Media\07017109.wav";
-            return path;
+        private SoundPlayer GetRandomSoundPlayer()
+        {
+            var rand = new Random().Next(0, _players.Count - 1);
+            return _players[rand];
         }
     }
 }

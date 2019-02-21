@@ -54,7 +54,7 @@ namespace Pomo_Shiny
             RemainingTime = RemainingTime.Subtract(new TimeSpan(0, 0, 0, 1));
             if (RemainingTime.TotalSeconds < 1)
             {
-                _soundProvider.MakeSoundAsync();
+                _soundProvider.MakeSound();
                 StopCountdown();
             }
         }

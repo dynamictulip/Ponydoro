@@ -127,6 +127,26 @@
   <ItemGroup>
     <Resource Include="unicorn2.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Media\07017109.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\07042154.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\07042293.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\07043261.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\07043397.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\07050147.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Media\07070150.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
