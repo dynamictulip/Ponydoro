@@ -52,6 +52,10 @@
         <Label Content="{Binding RemainingTime.TotalSeconds}" HorizontalAlignment="Left" Margin="187,174,0,0"
                VerticalAlignment="Top" FontWeight="Bold" FontSize="16" RenderTransformOrigin="2.368,-1.129"
                Foreground="{StaticResource ButtonBackgroundBrush}"
-               Visibility="{Binding TimerOff, Converter={StaticResource InverseBoolToVisibilityConverter}}" />
+               Visibility="{Binding TimerOff, Converter={StaticResource InverseBoolToVisibilityConverter}}" >
+            <Label.Effect>
+                <DropShadowEffect Direction="0" ShadowDepth="1" BlurRadius="6"/>
+            </Label.Effect>
+        </Label>
     </Grid>
 </Window>
