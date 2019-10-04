@@ -48,7 +48,7 @@ namespace Pomo_Shiny
 
         private void StartTimer()
         {
-            _countdownTimer.StartCountdown(25);
+            _countdownTimer.StartCountdown(25, false);
         }
 
         private void StopTimer()
@@ -58,7 +58,7 @@ namespace Pomo_Shiny
 
         private void StartBreakTimer()
         {
-            _countdownTimer.StartCountdown(5);
+            _countdownTimer.StartCountdown(5, false);
         }
 
         private void Exit()
