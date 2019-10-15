@@ -1,0 +1,13 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    name: Build executable
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: dotnet Build
+      - run: dotnet build 
