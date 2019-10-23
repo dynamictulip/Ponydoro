@@ -10,11 +10,16 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
+- task: NuGetToolInstaller@1
+  inputs:
+    versionSpec: 
+
 - task: VSBuild@1
   displayName: Build solution
   inputs:
     solution: '**\*.sln'
-    restoreNugetPackages: true
+    clean: true
+    maximumCpuCount: true
 
 - task: PublishBuildArtifacts@1
   displayName: Publish build artifacts
