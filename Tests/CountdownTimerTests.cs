@@ -47,7 +47,7 @@ namespace Tests
         [TestCase(88, 1)]
         public void PercentageComplete(int elapsedSeconds, double expectedPercentage)
         {
-            _sut.StartCountdown(1);
+            _sut.StartCountdown(1, false);
 
             while (_callBackList.Last().TotalSeconds > elapsedSeconds)
                 _timerFacadeCallback.Invoke(null);
@@ -56,9 +56,9 @@ namespace Tests
         }
 
         [Test]
-        public void Countdown_end_triggers_noise()
+        public void Countdown_end_triggers_noise_when_enabled()
         {
-            _sut.StartCountdown(1);
+            _sut.StartCountdown(1, true);
 
             for (var i = 0; i < 59; i++)
                 _timerFacadeCallback.Invoke(null);
@@ -67,11 +67,24 @@ namespace Tests
             _timerFacadeCallback?.Invoke(null);
             A.CallTo(() => _fakeSoundProvider.MakeSound()).MustHaveHappened();
         }
+        
+        [Test]
+        public void Countdown_end_does_not_trigger_noise_when_disabled()
+        {
+            _sut.StartCountdown(1, false);
+
+            for (var i = 0; i < 59; i++)
+                _timerFacadeCallback.Invoke(null);
+
+            A.CallTo(() => _fakeSoundProvider.MakeSound()).MustNotHaveHappened();
+            _timerFacadeCallback?.Invoke(null);
+            A.CallTo(() => _fakeSoundProvider.MakeSound()).MustNotHaveHappened();
+        }
 
         [Test]
         public void Countdown_triggers_callback_every_update()
         {
-            _sut.StartCountdown(1);
+            _sut.StartCountdown(1, false);
 
             for (var i = 0; i < 59; i++)
                 _timerFacadeCallback.Invoke(null);
@@ -91,7 +104,7 @@ namespace Tests
         public void StartCountdown_triggers_timer()
         {
             const int minutes = 10;
-            _sut.StartCountdown(minutes);
+            _sut.StartCountdown(minutes, false);
 
             A.CallTo(() => _fakeTimerFacade.KillTimer()).MustHaveHappened()
                 .Then(A.CallTo(() => _fakeTimerFacade.NewTimer(A<TimerCallback>.Ignored)).MustHaveHappened());

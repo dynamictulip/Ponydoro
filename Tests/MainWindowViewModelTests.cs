@@ -32,7 +32,7 @@ namespace Tests
         {
             _sut.StartTimerCommand.Execute(null);
 
-            A.CallTo(() => _fakeCountdownTimer.StartCountdown(25)).MustHaveHappened();
+            A.CallTo(() => _fakeCountdownTimer.StartCountdown(25, false)).MustHaveHappened();
         }
 
         [Test]
@@ -40,7 +40,7 @@ namespace Tests
         {
             _sut.StartBreakTimerCommand.Execute(null);
 
-            A.CallTo(() => _fakeCountdownTimer.StartCountdown(5)).MustHaveHappened();
+            A.CallTo(() => _fakeCountdownTimer.StartCountdown(5, false)).MustHaveHappened();
         }
 
         [Test]
