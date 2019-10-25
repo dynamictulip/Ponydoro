@@ -11,14 +11,23 @@ pool:
 
 steps:
 - task: DotNetCoreCLI@2
+  displayName: Build
   inputs:
     command: 'build'
     projects: '**/*.csproj'
+    arguments: '--configuration Release'
 
 - task: DotNetCoreCLI@2
+  displayName: Test
   inputs:
     command: 'test'
     projects: '**/Tests.csproj'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'bin\Debug\netcoreapp3.0\'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
   displayName: Publish build artifacts
