@@ -10,16 +10,15 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-- task: NuGetToolInstaller@1
+- task: DotNetCoreCLI@2
   inputs:
-    versionSpec: 
+    command: 'build'
+    projects: '**/*.csproj'
 
-- task: VSBuild@1
-  displayName: Build solution
+- task: DotNetCoreCLI@2
   inputs:
-    solution: '**\*.sln'
-    clean: true
-    maximumCpuCount: true
+    command: 'test'
+    projects: '**/Test.csproj'
 
 - task: PublishBuildArtifacts@1
   displayName: Publish build artifacts
