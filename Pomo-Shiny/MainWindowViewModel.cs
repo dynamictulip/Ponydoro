@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Windows.Input;
+using Microsoft.Extensions.Options;
 
 namespace Pomo_Shiny
 {
@@ -7,12 +9,14 @@ namespace Pomo_Shiny
     {
         private readonly IApplicationAccessor _applicationAccessor;
         private readonly ICountdownTimer _countdownTimer;
+        private readonly AppSettings _appSettings;
         private TimeSpan _remainingTime;
 
-        public MainWindowViewModel(IApplicationAccessor applicationAccessor, ICountdownTimer countdownTimer)
+        public MainWindowViewModel(IApplicationAccessor applicationAccessor, ICountdownTimer countdownTimer, IOptions<AppSettings> appSettings)
         {
             _applicationAccessor = applicationAccessor;
             _countdownTimer = countdownTimer;
+            _appSettings = appSettings.Value;
             _countdownTimer.Callback = val => RemainingTime = val;
 
             ExitCommand = new DelegateCommand(Exit);
@@ -48,7 +52,7 @@ namespace Pomo_Shiny
 
         private void StartTimer()
         {
-            _countdownTimer.StartCountdown(25, false);
+            _countdownTimer.StartCountdown(25, _appSettings.IsSoundOn);
         }
 
         private void StopTimer()
@@ -58,7 +62,7 @@ namespace Pomo_Shiny
 
         private void StartBreakTimer()
         {
-            _countdownTimer.StartCountdown(5, false);
+            _countdownTimer.StartCountdown(5, _appSettings.IsSoundOn);
         }
 
         private void Exit()

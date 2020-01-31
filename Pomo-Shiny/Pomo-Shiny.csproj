@@ -2,19 +2,23 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>Pomo_Shiny</RootNamespace>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Media\unicorn2.png" />
-    <None Remove="Media\unicorn2_Pyo_12.ico" />
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Resource Include="Media\unicorn2.png" />
+    <Resource Include="Media\unicorn2_Pyo_12.ico" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Media\unicorn2.png" />
-    <Resource Include="Media\unicorn2_Pyo_12.ico" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.1" />
   </ItemGroup>
 
 </Project>

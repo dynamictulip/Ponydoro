@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System.Configuration;
+using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Input;
 
@@ -10,10 +11,9 @@ namespace Pomo_Shiny
     [ExcludeFromCodeCoverage]
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        public MainWindow(MainWindowViewModel mainWindowViewModel)
         {
-            DataContext = new MainWindowViewModel(new ApplicationAccessor(),
-                new CountdownTimer(new TimerFacade(), new SoundProvider()));
+            DataContext = mainWindowViewModel;
             InitializeComponent();
         }
 

@@ -1,5 +1,6 @@
 using System;
 using FakeItEasy;
+using Microsoft.Extensions.Options;
 using NUnit.Framework;
 using Pomo_Shiny;
 
@@ -10,13 +11,16 @@ namespace Tests
         private IApplicationAccessor _fakeApplicationAccessor;
         private ICountdownTimer _fakeCountdownTimer;
         private MainWindowViewModel _sut;
+        private IOptions<AppSettings> _fakeAppSettings;
 
         [SetUp]
         public void Setup()
         {
             _fakeApplicationAccessor = A.Fake<IApplicationAccessor>();
             _fakeCountdownTimer = A.Fake<ICountdownTimer>();
-            _sut = new MainWindowViewModel(_fakeApplicationAccessor, _fakeCountdownTimer);
+            _fakeAppSettings = A.Fake<IOptions<AppSettings>>();
+
+            _sut = new MainWindowViewModel(_fakeApplicationAccessor, _fakeCountdownTimer, _fakeAppSettings);
         }
 
         [Test]
@@ -32,7 +36,7 @@ namespace Tests
         {
             _sut.StartTimerCommand.Execute(null);
 
-            A.CallTo(() => _fakeCountdownTimer.StartCountdown(25, false)).MustHaveHappened();
+            A.CallTo(() => _fakeCountdownTimer.StartCountdown(25, A<bool>._)).MustHaveHappened();
         }
 
         [Test]
@@ -40,7 +44,7 @@ namespace Tests
         {
             _sut.StartBreakTimerCommand.Execute(null);
 
-            A.CallTo(() => _fakeCountdownTimer.StartCountdown(5, false)).MustHaveHappened();
+            A.CallTo(() => _fakeCountdownTimer.StartCountdown(5, A<bool>._)).MustHaveHappened();
         }
 
         [Test]
@@ -101,6 +105,26 @@ namespace Tests
         {
             A.CallTo(() => _fakeCountdownTimer.PercentageToGo).Returns(value);
             Assert.AreEqual(expectedTitle, _sut.Title);
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void StartTimerCountdown_sound_controlled_by_config(bool soundIsOn)
+        {
+            _fakeAppSettings.Value.IsSoundOn = soundIsOn;
+
+            _sut.StartTimerCommand.Execute(null);
+            A.CallTo(() => _fakeCountdownTimer.StartCountdown(25, soundIsOn)).MustHaveHappened();
+        }
+
+        [TestCase(true)]
+        [TestCase(false)]
+        public void StartBreakTimerCountdown_sound_controlled_by_config(bool soundIsOn)
+        {
+            _fakeAppSettings.Value.IsSoundOn = soundIsOn;
+
+            _sut.StartBreakTimerCommand.Execute(null);
+            A.CallTo(() => _fakeCountdownTimer.StartCountdown(5, soundIsOn)).MustHaveHappened();
         }
     }
 }
