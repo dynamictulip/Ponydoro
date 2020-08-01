@@ -23,11 +23,13 @@ steps:
     publishLocation: 'Container'
 
 - task: GitHubRelease@1
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
   inputs:
     gitHubConnection: 'dynamictulip (1)'
     repositoryName: 'dynamictulip/Ponydorro'
     action: 'create'
     target: '$(Build.SourceVersion)'
-    tagSource: 'gitTag'
+    tagSource: 'userSpecifiedTag'
+    tag: 'v$(MajorVersion).$(Build.BuildNumber)'
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
