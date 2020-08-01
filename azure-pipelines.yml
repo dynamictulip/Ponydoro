@@ -21,3 +21,13 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+
+- task: GitHubRelease@1
+  inputs:
+    gitHubConnection: 'dynamictulip (1)'
+    repositoryName: 'dynamictulip/Ponydorro'
+    action: 'create'
+    target: '$(Build.SourceVersion)'
+    tagSource: 'gitTag'
+    changeLogCompareToRelease: 'lastFullRelease'
+    changeLogType: 'commitBased'
