@@ -15,10 +15,18 @@ steps:
     command: 'test'
     projects: '**/Tests.csproj'
 
-- task: PublishBuildArtifacts@1
-  displayName: Publish build artifacts
+- task: ArchiveFiles@2
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+
+- task: PublishBuildArtifacts@1
+  condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
@@ -31,5 +39,6 @@ steps:
     target: '$(Build.SourceVersion)'
     tagSource: 'userSpecifiedTag'
     tag: 'v$(MajorVersion).$(Build.BuildNumber)'
+    assets: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
