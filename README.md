@@ -1,6 +1,7 @@
 # Ponydoro
 
 [![Build Status](https://saragowen89.visualstudio.com/GitHubPipelines/_apis/build/status/dynamictulip.Ponydorro?branchName=master)](https://saragowen89.visualstudio.com/GitHubPipelines/_build/latest?definitionId=16&branchName=master)
+[![BCH compliance](https://bettercodehub.com/edge/badge/dynamictulip/Ponydoro?branch=master)](https://bettercodehub.com/)
 
 ### Pomodoro timer in :unicorn: form
 
