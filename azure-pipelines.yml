@@ -26,7 +26,7 @@ steps:
 - task: PublishBuildArtifacts@1
   condition: and(succeeded(), ne(variables['Build.SourceBranch'], 'refs/heads/master'))
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/Ponydoro_$(Build.BuildNumber).zip'
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
@@ -39,6 +39,6 @@ steps:
     target: '$(Build.SourceVersion)'
     tagSource: 'userSpecifiedTag'
     tag: 'v$(MajorVersion).$(Build.BuildNumber)'
-    assets: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    assets: '$(Build.ArtifactStagingDirectory)/$Ponydoro_(Build.BuildNumber).zip'
     changeLogCompareToRelease: 'lastFullRelease'
     changeLogType: 'commitBased'
