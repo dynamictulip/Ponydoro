@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 
-namespace Pomo_Shiny
+namespace Ponydoro_Common
 {
     public interface ITimerFacade
     {

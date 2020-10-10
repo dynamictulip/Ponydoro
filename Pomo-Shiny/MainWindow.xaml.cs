@@ -1,9 +1,8 @@
-﻿using System.Configuration;
-using System.Diagnostics.CodeAnalysis;
+﻿using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Input;
 
-namespace Pomo_Shiny
+namespace Ponydoro
 {
     /// <summary>
     ///     Interaction logic for MainWindow.xaml

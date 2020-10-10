@@ -4,9 +4,10 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Media;
-using Pomo_Shiny.Properties;
+using Ponydoro.Properties;
+using Ponydoro_Common;
 
-namespace Pomo_Shiny
+namespace Ponydoro
 {
     [ExcludeFromCodeCoverage]
     internal class SoundProvider : ISoundProvider

@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-
-namespace Pomo_Shiny
+﻿namespace Ponydoro
 {
     public class AppSettings
     {

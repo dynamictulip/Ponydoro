@@ -3,9 +3,10 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Pomo_Shiny</RootNamespace>
+    <RootNamespace>Ponydoro</RootNamespace>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Media/unicorn2_Pyo_12.ico</ApplicationIcon>
+    <AssemblyName>Ponydoro</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

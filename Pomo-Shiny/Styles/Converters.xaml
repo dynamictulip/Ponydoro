@@ -1,8 +1,9 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Pomo_Shiny" xmlns:Converters="clr-namespace:Pomo_Shiny.Converters">
-    <Converters:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter" />
+                    xmlns:local="clr-namespace:Ponydoro"
+                    xmlns:converters="clr-namespace:Ponydoro.Converters">
+    <converters:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter" />
 
-    <Converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
 
 </ResourceDictionary>

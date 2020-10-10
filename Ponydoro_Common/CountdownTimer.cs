@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Pomo_Shiny
+namespace Ponydoro_Common
 {
     public interface ICountdownTimer
     {

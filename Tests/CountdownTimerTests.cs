@@ -4,7 +4,8 @@ using System.Linq;
 using System.Threading;
 using FakeItEasy;
 using NUnit.Framework;
-using Pomo_Shiny;
+using Ponydoro;
+using Ponydoro_Common;
 
 namespace Tests
 {
@@ -17,7 +18,7 @@ namespace Tests
             _fakeTimerFacade = A.Fake<ITimerFacade>();
             _fakeSoundProvider = A.Fake<ISoundProvider>();
 
-            _sut = new CountdownTimer(_fakeTimerFacade, _fakeSoundProvider) {Callback = Callback};
+            _sut = new CountdownTimer(_fakeTimerFacade, _fakeSoundProvider) { Callback = Callback };
 
             _callBackList = new List<TimeSpan>();
             _timerFacadeCallback = null;
@@ -67,7 +68,7 @@ namespace Tests
             _timerFacadeCallback?.Invoke(null);
             A.CallTo(() => _fakeSoundProvider.MakeSound()).MustHaveHappened();
         }
-        
+
         [Test]
         public void Countdown_end_does_not_trigger_noise_when_disabled()
         {

@@ -3,8 +3,9 @@ using System.IO;
 using System.Windows;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Ponydoro_Common;
 
-namespace Pomo_Shiny
+namespace Ponydoro
 {
     /// <summary>
     ///     Interaction logic for App.xaml
