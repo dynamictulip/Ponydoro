@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.29409.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pomo-Shiny", "Pomo-Shiny\Pomo-Shiny.csproj", "{54CD4444-BF93-406E-AB2A-6DF12AE1CEE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{5EFDA017-91A0-4222-AE35-0B633CBBF65C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{5EFDA017-91A0-4222-AE35-0B633CBBF65C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ponydoro_Common", "Ponydoro_Common\Ponydoro_Common.csproj", "{FD2956BA-8969-40F1-87B9-F472A62C8095}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{5EFDA017-91A0-4222-AE35-0B633CBBF65C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EFDA017-91A0-4222-AE35-0B633CBBF65C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EFDA017-91A0-4222-AE35-0B633CBBF65C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD2956BA-8969-40F1-87B9-F472A62C8095}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD2956BA-8969-40F1-87B9-F472A62C8095}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD2956BA-8969-40F1-87B9-F472A62C8095}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD2956BA-8969-40F1-87B9-F472A62C8095}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

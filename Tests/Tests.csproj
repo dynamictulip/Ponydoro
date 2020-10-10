@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Pomo-Shiny\Pomo-Shiny.csproj" />
+    <ProjectReference Include="..\Ponydoro_Common\Ponydoro_Common.csproj" />
   </ItemGroup>
 
 </Project>

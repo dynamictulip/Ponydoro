@@ -10,7 +10,7 @@ namespace Pomo_Shiny
     }
 
     [ExcludeFromCodeCoverage]
-    internal class TimerFacade : ITimerFacade
+    public class TimerFacade : ITimerFacade
     {
         private Timer _timer;
 
