@@ -2,7 +2,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Windows.Input;
 
-namespace Pomo_Shiny
+namespace Ponydoro_WPF.Mvvm
 {
     [ExcludeFromCodeCoverage]
     public class DelegateCommand : ICommand

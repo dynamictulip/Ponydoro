@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 
-namespace Pomo_Shiny
+namespace Ponydoro_WPF
 {
     public interface IApplicationAccessor
     {

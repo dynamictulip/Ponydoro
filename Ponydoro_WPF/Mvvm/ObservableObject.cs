@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics.CodeAnalysis;
 
-namespace Pomo_Shiny
+namespace Ponydoro_WPF.Mvvm
 {
     [ExcludeFromCodeCoverage]
     public abstract class ObservableObject : INotifyPropertyChanged

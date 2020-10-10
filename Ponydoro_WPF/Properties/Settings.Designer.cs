@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Pomo_Shiny.Properties
+namespace Ponydoro_WPF.Properties
 {
 
 

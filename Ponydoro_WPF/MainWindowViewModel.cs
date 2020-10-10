@@ -1,9 +1,10 @@
-﻿using Microsoft.Extensions.Configuration;
-using System;
+﻿using System;
 using System.Windows.Input;
 using Microsoft.Extensions.Options;
+using Ponydoro_Common;
+using Ponydoro_WPF.Mvvm;
 
-namespace Pomo_Shiny
+namespace Ponydoro_WPF
 {
     public class MainWindowViewModel : ObservableObject
     {

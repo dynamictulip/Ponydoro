@@ -2,7 +2,8 @@ using System;
 using FakeItEasy;
 using Microsoft.Extensions.Options;
 using NUnit.Framework;
-using Pomo_Shiny;
+using Ponydoro_Common;
+using Ponydoro_WPF;
 
 namespace Tests
 {

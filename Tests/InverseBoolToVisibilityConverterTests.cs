@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Windows;
 using NUnit.Framework;
-using Pomo_Shiny.Converters;
+using Ponydoro_WPF.Converters;
 
 namespace Tests
 {

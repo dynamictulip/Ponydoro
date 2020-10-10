@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 
-namespace Pomo_Shiny
+namespace Ponydoro_Common
 {
     public interface ITimerFacade
     {
@@ -10,7 +10,7 @@ namespace Pomo_Shiny
     }
 
     [ExcludeFromCodeCoverage]
-    internal class TimerFacade : ITimerFacade
+    public class TimerFacade : ITimerFacade
     {
         private Timer _timer;
 

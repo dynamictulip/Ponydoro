@@ -3,9 +3,10 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Pomo_Shiny</RootNamespace>
+    <RootNamespace>Ponydoro_WPF</RootNamespace>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Media/unicorn2_Pyo_12.ico</ApplicationIcon>
+    <AssemblyName>Ponydoro</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +21,10 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.5" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.5" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="3.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ponydoro_Common\Ponydoro_Common.csproj" />
   </ItemGroup>
 
 </Project>

@@ -4,15 +4,11 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Media;
-using Pomo_Shiny.Properties;
+using Ponydoro_WPF.Properties;
+using Ponydoro_Common;
 
-namespace Pomo_Shiny
+namespace Ponydoro_WPF
 {
-    public interface ISoundProvider
-    {
-        void MakeSound();
-    }
-
     [ExcludeFromCodeCoverage]
     internal class SoundProvider : ISoundProvider
     {
