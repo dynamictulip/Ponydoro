@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading;
 using FakeItEasy;
 using NUnit.Framework;
-using Ponydoro;
 using Ponydoro_Common;
 
 namespace Tests

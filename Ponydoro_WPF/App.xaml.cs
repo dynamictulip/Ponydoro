@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Ponydoro_Common;
 
-namespace Ponydoro
+namespace Ponydoro_WPF
 {
     /// <summary>
     ///     Interaction logic for App.xaml

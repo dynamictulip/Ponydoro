@@ -2,7 +2,7 @@
 using System.Windows;
 using System.Windows.Input;
 
-namespace Ponydoro
+namespace Ponydoro_WPF
 {
     /// <summary>
     ///     Interaction logic for MainWindow.xaml

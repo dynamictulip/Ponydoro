@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace Ponydoro.Converters
+namespace Ponydoro_WPF.Converters
 {
     public class BoolToVisibilityConverter : IValueConverter
     {

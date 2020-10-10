@@ -4,10 +4,10 @@ using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Linq;
 using System.Media;
-using Ponydoro.Properties;
+using Ponydoro_WPF.Properties;
 using Ponydoro_Common;
 
-namespace Ponydoro
+namespace Ponydoro_WPF
 {
     [ExcludeFromCodeCoverage]
     internal class SoundProvider : ISoundProvider

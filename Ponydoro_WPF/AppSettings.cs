@@ -1,4 +1,4 @@
-﻿namespace Ponydoro
+﻿namespace Ponydoro_WPF
 {
     public class AppSettings
     {

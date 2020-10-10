@@ -6,7 +6,7 @@ steps:
   displayName: Build
   inputs:
     command: 'build'
-    projects: '**/Pomo-Shiny.csproj'
+    projects: '**/Ponydoro_WPF.csproj'
     arguments: '--configuration Release --output $(Build.ArtifactStagingDirectory)'
 
 - task: DotNetCoreCLI@2

@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Windows.Input;
 using Microsoft.Extensions.Options;
-using Ponydoro.Mvvm;
 using Ponydoro_Common;
+using Ponydoro_WPF.Mvvm;
 
-namespace Ponydoro
+namespace Ponydoro_WPF
 {
     public class MainWindowViewModel : ObservableObject
     {
