@@ -9,6 +9,6 @@ This is a .NET Core 3 WPF [Pomodoro](https://francescocirillo.com/pages/pomodoro
 
 By default a pomodoro lasts for 25 minutes and a break lasts for 5
 
-![Ponydoro image](/Pomo-Shiny/Media/unicorn2.png)
+![Ponydoro image](/Ponydoro_WPF/Media/unicorn2.png)
 
 Please feel free to add random improvements or raise issues/feature requests
