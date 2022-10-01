@@ -20,15 +20,15 @@ steps:
   inputs:
     command: custom
     custom: tool
-    arguments: install dotnet-stryker --tool-path $(Agent.BuildDirectory)/tools
+    arguments: install -g dotnet-stryker
 
-- task: Powershell@2
+- task: DotNetCoreCLI@2
   displayName: 'Run dotnet-stryker Ponydoro_Common'
   inputs:
-    workingDirectory: $(Build.SourcesDirectory)/Ponydoro_Common.Tests
-    targetType: 'inline'
-    pwsh: true
-    script: $(Agent.BuildDirectory)/tools/dotnet-stryker
+    command: 'custom'
+    custom: 'stryker'
+    arguments: '--config-file "../stryker-config.json"'
+    workingDirectory: '$(Build.SourcesDirectory)/Ponydoro_Common.Tests'
 
 - task: DotNetCoreCLI@2
   displayName: 'Run dotnet-stryker Ponydoro_WPF'
