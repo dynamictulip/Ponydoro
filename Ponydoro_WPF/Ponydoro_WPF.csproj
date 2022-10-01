@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net6.0-windows</TargetFramework>
     <RootNamespace>Ponydoro_WPF</RootNamespace>
     <UseWPF>true</UseWPF>
     <ApplicationIcon>Media/unicorn2_Pyo_12.ico</ApplicationIcon>
