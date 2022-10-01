@@ -89,14 +89,13 @@ namespace Tests
             for (var i = 0; i < 59; i++)
                 _timerFacadeCallback.Invoke(null);
 
-            Assert.AreEqual(61, _callBackList.Count); //set to 0, then to 60, then 59 changes makes 61 total changes
-            var changes = Enumerable.Range(1, 60).Reverse().Prepend(0).ToList();
+            Assert.AreEqual(60, _callBackList.Count); //set to 60, count to 1, makes 60 total changes
+            var changes = Enumerable.Range(1, 60).Reverse().ToList();
             CollectionAssert.AreEquivalent(changes, _callBackList.Select(timeSpan => timeSpan.TotalSeconds));
-
 
             _timerFacadeCallback?.Invoke(null);
 
-            changes = changes.Append(0).Append(0).ToList();
+            changes = changes.Append(0).ToList();
             CollectionAssert.AreEquivalent(changes, _callBackList.Select(timeSpan => timeSpan.TotalSeconds));
         }
 
@@ -114,6 +113,7 @@ namespace Tests
         [Test]
         public void StopCountdown_stops_timer()
         {
+            _sut.StartCountdown(1, true);
             _sut.StopCountdown();
 
             A.CallTo(() => _fakeTimerFacade.KillTimer()).MustHaveHappened();

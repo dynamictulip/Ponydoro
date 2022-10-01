@@ -29,6 +29,10 @@ namespace Ponydoro_Common
             get => _remainingTime;
             set
             {
+                if (_remainingTime == value)
+                {
+                    return;
+                }
                 _remainingTime = value;
                 Callback(value);
             }
