@@ -23,20 +23,20 @@ steps:
     arguments: install dotnet-stryker --tool-path $(Agent.BuildDirectory)/tools
 
 - task: Powershell@2
-  displayName: 'Run dotnet-stryker'
+  displayName: 'Run dotnet-stryker Ponydoro_Common'
   inputs:
     workingDirectory: $(Build.SourcesDirectory)/Ponydoro_Common.Tests
     targetType: 'inline'
     pwsh: true
     script: $(Agent.BuildDirectory)/tools/dotnet-stryker
 
-- task: Powershell@2
-  displayName: 'Run dotnet-stryker'
+- task: DotNetCoreCLI@2
+  displayName: 'Run dotnet-stryker Ponydoro_WPF'
   inputs:
-    workingDirectory: $(Build.SourcesDirectory)/Ponydoro_WPF.Tests
-    targetType: 'inline'
-    pwsh: true
-    script: $(Agent.BuildDirectory)/tools/dotnet-stryker
+    command: 'custom'
+    custom: 'stryker'
+    arguments: '--config-file "../stryker-config.json"'
+    workingDirectory: '$(Build.SourcesDirectory)/Ponydoro_WPF.Tests'
 
 - task: PublishMutationReport@0
   displayName: 'Publish Mutation Test Report'
