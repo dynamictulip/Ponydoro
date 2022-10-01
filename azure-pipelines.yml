@@ -35,7 +35,7 @@ steps:
   inputs:
     command: 'custom'
     custom: 'stryker'
-    arguments: '--config-file "../stryker-config.json"'
+    arguments: '--config-file "./stryker-config.json" --version "$(Build.SourceBranchName)"'
     workingDirectory: '$(Build.SourcesDirectory)/Ponydoro_WPF.Tests'
 
 - task: PublishMutationReport@0
