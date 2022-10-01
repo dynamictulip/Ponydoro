@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using FakeItEasy;
-using FluentAssertions;
-using NUnit.Framework;
-using Ponydoro_Common;
-
-namespace Tests
+﻿namespace Tests
 {
     [TestFixture]
     public class CountdownTimerTests
