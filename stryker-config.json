@@ -1,0 +1,10 @@
+{
+    "stryker-config": {
+        "solution": "./Ponydoro.sln",
+        "thresholds": {
+            "high": 80,
+            "low": 60,
+            "break": 0
+        }
+    }
+}
