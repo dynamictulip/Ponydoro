@@ -25,7 +25,15 @@ steps:
 - task: Powershell@2
   displayName: 'Run dotnet-stryker'
   inputs:
-    workingDirectory: $(Build.SourcesDirectory)/Tests
+    workingDirectory: $(Build.SourcesDirectory)/Ponydoro_Common.Tests
+    targetType: 'inline'
+    pwsh: true
+    script: $(Agent.BuildDirectory)/tools/dotnet-stryker
+
+- task: Powershell@2
+  displayName: 'Run dotnet-stryker'
+  inputs:
+    workingDirectory: $(Build.SourcesDirectory)/Ponydoro_WPF.Tests
     targetType: 'inline'
     pwsh: true
     script: $(Agent.BuildDirectory)/tools/dotnet-stryker
