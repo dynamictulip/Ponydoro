@@ -14,8 +14,6 @@
     </Window.Background>
     <Window.ContextMenu>
         <ContextMenu Background="Transparent" BorderThickness="0">
-            <MenuItem Header="Reset" Command="{Binding StartTimerCommand}" Style="{StaticResource MenuItemStyle}"
-                      Visibility="{Binding TimerOn, Converter={StaticResource BoolToVisibilityConverter}}" />
             <MenuItem Header="Stop" Command="{Binding StopTimerCommand}" Style="{StaticResource MenuItemStyle}" 
                       Visibility="{Binding TimerOn, Converter={StaticResource BoolToVisibilityConverter}}" />
             <MenuItem Header="Exit" Command="{Binding ExitCommand}" Style="{StaticResource MenuItemStyle}" />
