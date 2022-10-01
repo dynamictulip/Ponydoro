@@ -27,7 +27,7 @@ steps:
   inputs:
     command: 'custom'
     custom: 'stryker'
-    arguments: '--config-file "../stryker-config.json"'
+    arguments: '--config-file "../stryker-config.json" --version "$(Build.SourceBranchName)-Ponydoro_Common"'
     workingDirectory: '$(Build.SourcesDirectory)/Ponydoro_Common.Tests'
 
 - task: DotNetCoreCLI@2
@@ -35,7 +35,7 @@ steps:
   inputs:
     command: 'custom'
     custom: 'stryker'
-    arguments: '--config-file "./stryker-config.json" --version "$(Build.SourceBranchName)"'
+    arguments: '--config-file "../stryker-config.json" --version "$(Build.SourceBranchName)-Ponydoro_WPF"'
     workingDirectory: '$(Build.SourcesDirectory)/Ponydoro_WPF.Tests'
 
 - task: PublishMutationReport@0

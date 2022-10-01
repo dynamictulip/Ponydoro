@@ -1,7 +1,10 @@
 {
     "stryker-config": {
+        "baseline": {
+            "provider": "Dashboard"
+        },
         "project-info": {
-            "name": "https://github.com/dynamictulip/Ponydoro"
+            "name": "github.com/dynamictulip/Ponydoro"
         },
         "reporters": [
             "html",
