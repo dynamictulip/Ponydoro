@@ -1,6 +1,9 @@
 {
     "stryker-config": {
-        "solution": "./Ponydoro.sln",
+        "reporters": [
+            "html",
+            "progress"
+        ],
         "thresholds": {
             "high": 80,
             "low": 60,
