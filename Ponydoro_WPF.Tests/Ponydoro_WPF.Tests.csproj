@@ -19,7 +19,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Ponydoro_WPF\Ponydoro_WPF.csproj" />
-    <ProjectReference Include="..\Ponydoro_Common\Ponydoro_Common.csproj" />
   </ItemGroup>
 
 </Project>

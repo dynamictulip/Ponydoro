@@ -15,6 +15,34 @@ steps:
     command: 'test'
     projects: '**/Tests.csproj'
 
+- task: DotNetCoreCLI@2
+  displayName: 'Install dotnet-stryker'
+  inputs:
+    command: custom
+    custom: tool
+    arguments: install -g dotnet-stryker
+
+- task: DotNetCoreCLI@2
+  displayName: 'Run dotnet-stryker Ponydoro_Common'
+  inputs:
+    command: 'custom'
+    custom: 'stryker'
+    arguments: '--config-file "../stryker-config.json" --version "$(Build.SourceBranchName)-Ponydoro_Common"'
+    workingDirectory: '$(Build.SourcesDirectory)/Ponydoro_Common.Tests'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Run dotnet-stryker Ponydoro_WPF'
+  inputs:
+    command: 'custom'
+    custom: 'stryker'
+    arguments: '--config-file "../stryker-config.json" --version "$(Build.SourceBranchName)-Ponydoro_WPF"'
+    workingDirectory: '$(Build.SourcesDirectory)/Ponydoro_WPF.Tests'
+
+- task: PublishMutationReport@0
+  displayName: 'Publish Mutation Test Report'
+  inputs:
+    reportPattern: '**/mutation-report.html'
+    
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
