@@ -25,11 +25,11 @@ namespace Tests
         }
 
         [Test]
-        public void False_gives_hidden()
+        public void False_gives_collapsed()
         {
             var result = _sut.Convert(false, typeof(Visibility), null, CultureInfo.CurrentCulture);
 
-            Assert.AreEqual(Visibility.Hidden, result);
+            Assert.AreEqual(Visibility.Collapsed, result);
         }
 
         [Test]

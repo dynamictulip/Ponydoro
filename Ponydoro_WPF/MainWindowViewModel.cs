@@ -38,13 +38,15 @@ namespace Ponydoro_WPF
             {
                 _remainingTime = value;
                 RaisePropertyChangedEvent(nameof(RemainingTime));
+                RaisePropertyChangedEvent(nameof(TimerOn));
                 RaisePropertyChangedEvent(nameof(TimerOff));
                 RaisePropertyChangedEvent(nameof(PercentageToGo));
                 RaisePropertyChangedEvent(nameof(Title));
             }
         }
 
-        public bool TimerOff => RemainingTime.TotalSeconds < 1;
+        public bool TimerOn => RemainingTime.TotalSeconds > 0;
+        public bool TimerOff => !TimerOn;
         public double PercentageToGo => _countdownTimer.PercentageToGo;
 
         public string Title => PercentageToGo >= 1 || PercentageToGo <= 0 ? "Ready for a ponydorro?" :

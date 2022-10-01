@@ -14,8 +14,10 @@
     </Window.Background>
     <Window.ContextMenu>
         <ContextMenu Background="Transparent" BorderThickness="0">
-            <MenuItem Header="Reset" Command="{Binding StartTimerCommand}" Style="{StaticResource MenuItemStyle}" />
-            <MenuItem Header="Stop" Command="{Binding StopTimerCommand}" Style="{StaticResource MenuItemStyle}" />
+            <MenuItem Header="Reset" Command="{Binding StartTimerCommand}" Style="{StaticResource MenuItemStyle}"
+                      Visibility="{Binding TimerOn, Converter={StaticResource BoolToVisibilityConverter}}" />
+            <MenuItem Header="Stop" Command="{Binding StopTimerCommand}" Style="{StaticResource MenuItemStyle}" 
+                      Visibility="{Binding TimerOn, Converter={StaticResource BoolToVisibilityConverter}}" />
             <MenuItem Header="Exit" Command="{Binding ExitCommand}" Style="{StaticResource MenuItemStyle}" />
         </ContextMenu>
     </Window.ContextMenu>
@@ -51,7 +53,7 @@
         <Label Content="{Binding RemainingTime.TotalSeconds}" HorizontalAlignment="Left" Margin="187,174,0,0"
                VerticalAlignment="Top" FontWeight="Bold" FontSize="16" RenderTransformOrigin="2.368,-1.129"
                Foreground="{StaticResource ButtonBackgroundBrush}"
-               Visibility="{Binding TimerOff, Converter={StaticResource InverseBoolToVisibilityConverter}}" >
+               Visibility="{Binding TimerOn, Converter={StaticResource BoolToVisibilityConverter}}" >
             <Label.Effect>
                 <DropShadowEffect Direction="0" ShadowDepth="1" BlurRadius="6"/>
             </Label.Effect>
